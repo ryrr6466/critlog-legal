@@ -53,8 +53,7 @@
 <p class="meta">最後更新：2026 年 10 月 11 日　·　<a href="#english">English summary</a>　·　<a href="#data-deletion">資料刪除說明</a></p>
 
 <div class="box">
-  重點：你的成績與遊玩紀錄平常只存在自己的手機。雲端功能是選配，不開就不會建立帳號、不會上傳任何資料。
-  加密備份在你的手機上加密，我們看不到內容，<strong>也看不到你的出勤</strong>。
+  重點：你的成績與遊玩紀錄平常只存在自己的手機。雲端功能是選配；開啟備份時，依選擇的模式加密上傳。備份可選「雲端保管」（登入即可還原，開發者技術上能讀取）或「端對端加密」（我們看不到內容，也看不到你的出勤）。
 </div>
 
 <h2 id="about">關於 CRITLOG</h2>
@@ -66,17 +65,19 @@ App 在你的手機上登入官方網站讀取你的成績，存在手機的本�
 <h3>雲端帳號</h3>
 <ul>
   <li>第一次使用雲端功能時，會建立一組隨機的帳號識別碼，不需要填任何資料。</li>
-  <li>你可以把 Google 或 X 帳號綁定到雲端帳號，用來在新裝置登入。綁定時，我們會從該平台收到並保存：
+  <li>你可以把 Google、X 或 Apple 帳號綁定到雲端帳號，用來在新裝置登入。Apple 登入只在 iOS 提供。綁定時，我們會從該平台收到並保存：
     該平台的帳號 ID、顯示名稱、使用者名稱、電子郵件地址（平台有提供時）與大頭貼網址。
     這些資料只用於登入與辨識你的雲端帳號，不會公開，也不會用來寄送行銷訊息。</li>
+  <li>使用 Apple 登入時，我們會收到並保存 Apple 帳號 ID 與電子郵件地址（可能是 Apple 的轉寄地址）；不要求姓名。</li>
   <li>我們不會在這些平台上代你發文、讀取你的貼文、好友或追蹤名單。</li>
 </ul>
 
 <h3>加密備份</h3>
 <ul>
   <li>開啟備份時，App 會把 CHUNITHM 與 maimai DX 的本機資料庫在你的手機上以 AES-256-GCM 加密後才上傳。</li>
-  <li>加密金鑰由你的手機產生，以「復原碼」交給你保管；伺服器沒有金鑰，只保存密文，無法讀取內容。</li>
-  <li>雲端保留最新一份與前一份備份。忘記或遺失復原碼時，我們也無法替你還原備份。</li>
+  <li><strong>雲端保管（預設）</strong>：金鑰存在雲端 <code>backup_keys</code> 表與你的手機，只有你的帳號與營運者（service role）讀得到。開發者技術上能解密備份，包含遊玩紀錄與出勤時間；登入即可還原。</li>
+  <li><strong>端對端加密</strong>：金鑰只在你的手機，以「復原碼」交給你保管；我們看不到備份內容或你的出勤。忘記或遺失復原碼時，我們也無法替你還原備份。</li>
+  <li>雲端保留最新一份與前一份備份。</li>
 </ul>
 
 <h3>公開名片與匿名統計（準備中）</h3>
@@ -87,7 +88,7 @@ App 在你的手機上登入官方網站讀取你的成績，存在手機的本�
 </ul>
 
 <h3>不會上傳的資料</h3>
-<p>除了加密備份（伺服器看不到內容）之外，以下資料一律不上傳：遊玩紀錄、出勤日期與時段、花費、成績與 Rating 變化的時間；
+<p>除了你開啟的加密備份之外，以下資料一律不上傳：遊玩紀錄、出勤日期與時段、花費、成績與 Rating 變化的時間；
 maimai DX 的遊玩詳細、單曲最後遊玩日期、2P 名次與同場玩家（同場玩家的名字連手機都不保存）。</p>
 
 <h2 id="use">資料用途</h2>
@@ -97,7 +98,7 @@ maimai DX 的遊玩詳細、單曲最後遊玩日期、2P 名次與同場玩家�
 <h2 id="third-party">存放地點與第三方</h2>
 <ul>
   <li>資料庫、帳號與檔案儲存使用 <a href="https://supabase.com/privacy" rel="noopener">Supabase</a>，資料存放在日本東京區域。</li>
-  <li>登入時會經過你選擇的平台（Google、X），該平台如何處理你的資料，依各平台自己的隱私權政策。</li>
+  <li>登入時會經過你選擇的平台（Google、X 或 Apple），該平台如何處理你的資料，依各平台自己的隱私權政策。</li>
   <li>官方網站的圖片直接連到官方網址顯示，不存放在我們的伺服器。</li>
 </ul>
 
@@ -113,17 +114,17 @@ maimai DX 的遊玩詳細、單曲最後遊玩日期、2P 名次與同場玩家�
   <li>打開 CRITLOG，進入「設定」。</li>
   <li>在「雲端帳號」按「刪除雲端帳號」，確認後送出。</li>
 </ol>
-<p>刪除後會<strong>立即且永久</strong>移除：雲端帳號、綁定的 Google／X 登入資料、加密備份，以及兩個遊戲的所有雲端資料（含公開名片）。
+<p>刪除後會<strong>立即且永久</strong>移除：雲端帳號、綁定的 Google／X／Apple 登入資料、備份金鑰、加密備份，以及兩個遊戲的所有雲端資料（含公開名片），並撤銷 CRITLOG 的 Apple 登入授權。
 手機上的成績與紀錄不受影響；如果也要刪除，直接解除安裝 App 即可。</p>
 <p>如果你已經無法使用 App（例如手機遺失或已解除安裝），請寫信到 <a href="mailto:spsbeish@gmail.com">spsbeish@gmail.com</a>，
-說明你用哪個平台（Google 或 X）登入，並用該平台帳號的電子郵件寄出或提供該平台的使用者名稱，方便我們確認是你本人。
+說明你用哪個平台（Google、X 或 Apple）登入，並用該平台帳號的電子郵件寄出或提供該平台的使用者名稱，方便我們確認是你本人。
 我們會在 30 天內刪除並回信通知。</p>
 
 <h2 id="rights">你的權利</h2>
 <p>你可以要求查閱、匯出或更正你的雲端資料，請用下方的聯絡方式提出。之後提供的公開名片與匿名統計可以隨時關閉，以撤回該項同意。</p>
 
 <h2 id="security">安全</h2>
-<p>資料傳輸全程加密；伺服器的資料以權限控管保護，每個人只能存取自己的資料；管理用金鑰不放在 App 中；備份端對端加密。</p>
+<p>資料傳輸全程加密；伺服器的資料以權限控管保護，每個人只能存取自己的資料；管理用金鑰不放在 App 中。雲端保管模式的金鑰存在雲端，只有你的帳號與營運者（service role）讀得到，開發者技術上能解密備份；端對端加密模式的金鑰只在你的手機，我們看不到備份內容。</p>
 
 <h2 id="children">未成年人</h2>
 <p>CRITLOG 沒有針對兒童設計。未滿 18 歲的使用者請在法定代理人同意後再使用雲端功能。</p>
@@ -136,12 +137,13 @@ maimai DX 的遊玩詳細、單曲最後遊玩日期、2P 名次與同場玩家�
 
 <h2 id="english">English summary</h2>
 <p>CRITLOG is an unofficial, personally developed score tracker for the arcade games CHUNITHM and maimai DX.
-Your scores and play history stay on your phone. Cloud features are optional; nothing is uploaded unless you turn them on.</p>
+Your scores and play history normally stay on your phone. Backups are optional: choose cloud-held keys for sign-in restore (the developer can technically read the backup, including play and attendance times), or end-to-end encryption (we cannot see the contents or your attendance).</p>
 <ul>
-  <li><strong>Sign-in</strong>: you may link a Google or X account to your CRITLOG cloud account to sign in on a new device.
+  <li><strong>Sign-in</strong>: you may link a Google, X or Apple account to your CRITLOG cloud account to sign in on a new device. Apple sign-in is available natively on iOS only.
     We store the account ID, display name, username, email address (if provided) and profile picture URL from that platform, only to identify your account.
     We never post on your behalf or read your posts, friends or followers.</li>
-  <li><strong>Encrypted backup</strong>: your local databases are encrypted on your device (AES-256-GCM) before upload. Only you hold the key (recovery code); we cannot read your backup.</li>
+  <li><strong>Apple sign-in</strong>: we receive and store your Apple account ID and email address (which may be an Apple relay address). We do not request your name.</li>
+  <li><strong>Encrypted backup</strong>: choose cloud-held keys (stored in <code>backup_keys</code>; only your account and our operator service role can read the key, so the developer can technically decrypt backups, including play and attendance times) or end-to-end encryption (the key stays on your device and we cannot read the backup). Both encrypt your local databases with AES-256-GCM before upload.</li>
   <li>We do not sell data, show ads, or use data for AI training. Data is stored with Supabase in Tokyo, Japan.</li>
 </ul>
 <h3 id="data-deletion-en">Data deletion instructions</h3>
@@ -149,8 +151,8 @@ Your scores and play history stay on your phone. Cloud features are optional; no
   <li>Open CRITLOG and go to Settings.</li>
   <li>Under “Cloud account” (雲端帳號), tap “Delete cloud account” (刪除雲端帳號) and confirm.</li>
 </ol>
-<p>This immediately and permanently deletes your cloud account, linked Google/X sign-in data, backups and all cloud data.
-If you can no longer use the app, email <a href="mailto:spsbeish@gmail.com">spsbeish@gmail.com</a> from the email of your linked account
+<p>This immediately and permanently deletes your cloud account, linked Google/X/Apple sign-in data, backup keys, backups and all cloud data, and revokes CRITLOG's Apple sign-in authorization.
+If you can no longer use the app, email <a href="mailto:spsbeish@gmail.com">spsbeish@gmail.com</a> from the email of your linked Google, X or Apple account
 (or include your username on that platform); we will delete your data within 30 days and confirm by email.</p>
 
 <footer>CRITLOG · 非官方遊玩紀錄 App，與 SEGA 無關。</footer>
